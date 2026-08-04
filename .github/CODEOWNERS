@@ -1,35 +1,40 @@
-# CODEOWNERS — 代码归属与自动审查分配
+# CODEOWNERS — 代码归属与 PR 自动审查分配
 # 每行格式：<路径模式> @用户名/@团队名
-# 把 @maintainer-x 替换为实际 GitHub 用户名或团队名
+#
+# ⚠️ 开源发布前：把 @oneact-sh 替换为实际的 GitHub 维护者账号或团队
+#    （org 名参考策划书「附录」拟定方案：oneact-sh）。
+#    单人维护初期可只保留文末默认规则 `*  @<你的 GitHub 账号>`。
 
-# ── 核心包（2 人审查，双重保险）──
-/packages/core/           @maintainer-a @maintainer-b
-/packages/schema/         @maintainer-a @maintainer-b
+# ── 核心包（建议 2 人审查，双重保险）──
+/packages/core/           @oneact-sh
+/packages/schema/         @oneact-sh
 
-# ── AI 模块（安全敏感，2 人审查）──
-/packages/ai/             @maintainer-a @maintainer-b
+# ── AI 模块（安全敏感，建议 2 人审查）──
+/packages/ai/             @oneact-sh
 
-# ── 业务包（1 人审查）──
-/packages/components/     @maintainer-c
-/packages/layouts/        @maintainer-c
-/packages/player/         @maintainer-c
-/packages/cli/            @maintainer-d
-/packages/exporter-deck/  @maintainer-d
-/packages/exporter-pptx/  @maintainer-d
-/packages/mcp/            @maintainer-d
+# ── 业务包 ──
+/packages/components/     @oneact-sh
+/packages/layouts/        @oneact-sh
+/packages/skills/         @oneact-sh
+/packages/orchestrator/   @oneact-sh
+/packages/player/         @oneact-sh
+/packages/cli/            @oneact-sh
+/packages/exporter-deck/  @oneact-sh
+/packages/exporter-pptx/  @oneact-sh
+/packages/mcp/            @oneact-sh
 
 # ── 应用 ──
-/apps/                    @maintainer-c @maintainer-d
+/apps/                    @oneact-sh
 
 # ── 基建（工具链、CI、文档）──
-/.github/                 @maintainer-a
-/docs/                    @maintainer-a
-/eslint.config.js         @maintainer-a
-/.prettierrc.json         @maintainer-a
-/commitlint.config.js     @maintainer-a
-/package.json             @maintainer-a
-/tsconfig.base.json       @maintainer-a
-/.husky/                  @maintainer-a
+/.github/                 @oneact-sh
+/docs/                    @oneact-sh
+/eslint.config.js         @oneact-sh
+/.prettierrc.json         @oneact-sh
+/commitlint.config.js     @oneact-sh
+/package.json             @oneact-sh
+/tsconfig.base.json       @oneact-sh
+/.husky/                  @oneact-sh
 
 # ── 默认（未匹配以上规则的文件）──
-*                         @maintainer-a
+*                         @oneact-sh

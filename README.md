@@ -4,6 +4,11 @@
 >
 > An AI-native presentation format + rendering runtime — the HTML + browser of the slides world.
 
+[![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](./LICENSE)
+[![Node](https://img.shields.io/badge/node-%E2%89%A518-339933.svg)](https://nodejs.org)
+[![pnpm](https://img.shields.io/badge/pnpm-9-f69220.svg)](https://pnpm.io)
+[![Tests](https://img.shields.io/badge/tests-290%20passed-brightgreen.svg)](#-测试)
+
 AI 用 JSON 写幻灯片，框架负责高保真渲染；人像用 WPS 一样逐页预览，并可用自然语言指挥 AI 局部修改任意元素。**Skill 系统让生成质量对齐「资深设计师 + 行业专家」；多 Agent 编排器自治完成「策划 → 大纲 → 逐页 → 质检 → 自愈」全流程。**
 
 ---
@@ -25,6 +30,8 @@ AI 用 JSON 写幻灯片，框架负责高保真渲染；人像用 WPS 一样逐
 - **双格式导出**：`.act`（JSON + assets 目录，git 可 diff）+ 自包含单 HTML（双击即播）+ `.pptx` 降级导出（25 元素全覆盖 + 降级报告）。
 
 ## 🚀 快速开始
+
+> **前置要求**：Node.js ≥ 18、pnpm ≥ 9（未安装 pnpm 可执行 `corepack enable`）。
 
 ```bash
 pnpm install          # 安装 workspace 依赖（pnpm 9+）
@@ -146,8 +153,21 @@ pnpm test   # vitest，290 tests / 24 文件：校验器 / 几何 / 动画 / 图
 - **资源策略**：`.act` 用同名 `.assets/` 目录（diff 友好，不做 base64），base64 仅用于自包含 HTML 分发产物。
 - **模型 key 用户自配**：仅存本地，不经过任何服务器。
 
-详见 [`../策划书.md`](../策划书.md)。
+完整设计见 [`./策划书.md`](./策划书.md)。
+
+## 🤝 贡献
+
+欢迎 Issue / PR。提交前请跑 `pnpm lint && pnpm typecheck && pnpm test`，并遵循 [Conventional Commits](https://www.conventionalcommits.org/)（仓库已配 commitlint + husky 自动校验）。
+
+- 🐛 **缺陷**请提 [Issue](./issues)，附最小复现（`.act` 文件或 JSON 片段）
+- 💡 **功能建议**请先开 Issue 讨论，达成共识后再提 PR
+- 📖 **文档与示例**（`examples/`）同样欢迎贡献，门槛低、收益大
+
+## 🗣 反馈与社区
+
+- [GitHub Discussions](./discussions) — 用法问答、最佳实践、showcase
+- [GitHub Issues](./issues) — 缺陷报告与功能请求
 
 ## 📄 许可证
 
-Apache-2.0（含专利授权，大公司敢用）。
+[Apache-2.0](./LICENSE)（含专利授权，大公司敢用）。© 2026 OneAct Contributors。
