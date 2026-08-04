@@ -1,8 +1,8 @@
 /**
  * @oneact/cli — 一幕 OneAct 命令行
  *
- * 命令：validate（校验）· init（建骨架）· export（自包含单 HTML）· serve（舞台预览服务）。
- * 经 esbuild 打包为单文件 dist/cli.mjs，bin/oneact.mjs 调用，无运行时依赖。
+ * 命令：validate · init · from-md · from-pptx · export · serve · http · benchmark（共 9 个）。
+ * 经 esbuild 打包为单文件 dist/cli.cjs，bin/oneact.cjs 调用，无运行时依赖。
  */
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { createServer, type Server } from "node:http";

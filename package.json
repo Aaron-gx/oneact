@@ -23,7 +23,7 @@
     "lint:fix": "eslint packages/**/*.ts apps/**/*.ts --fix",
     "format": "prettier --write \"packages/**/*.{ts,json,md}\" \"apps/**/*.{ts,json,md}\"",
     "format:check": "prettier --check \"packages/**/*.{ts,json,md}\" \"apps/**/*.{ts,json,md}\"",
-    "validate:example": "node packages/cli/bin/oneact.mjs validate examples/self-intro.act.json",
+    "validate:example": "node packages/cli/bin/oneact.cjs validate examples/self-intro.act.json",
     "changeset": "changeset",
     "version": "changeset version",
     "publish": "changeset publish",
