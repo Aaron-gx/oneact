@@ -1,0 +1,26 @@
+{
+  "name": "@oneact/mcp",
+  "version": "0.1.0",
+  "type": "module",
+  "license": "Apache-2.0",
+  "description": "一幕 OneAct · MCP server（让任意 Agent 接入生成/校验/重写 .act）",
+  "bin": {
+    "oneact-mcp": "./bin/oneact-mcp.cjs"
+  },
+  "main": "./dist/mcp.cjs",
+  "scripts": {
+    "build": "node build.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4",
+    "@oneact/ai": "workspace:*",
+    "@oneact/skills": "workspace:*",
+    "@oneact/schema": "workspace:*",
+    "@oneact/layouts": "workspace:*",
+    "@oneact/core": "workspace:*"
+  },
+  "devDependencies": {
+    "esbuild": "^0.23.0",
+    "typescript": "^5.5.4"
+  }
+}

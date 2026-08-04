@@ -1,0 +1,59 @@
+{
+  "name": "oneact",
+  "version": "0.5.0",
+  "private": true,
+  "description": "一幕 OneAct · AI 原生演示框架 —— PPT 界的 HTML + 浏览器",
+  "license": "Apache-2.0",
+  "type": "module",
+  "packageManager": "pnpm@9.12.0",
+  "engines": {
+    "node": ">=18"
+  },
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "build": "pnpm -r --filter \"./packages/**\" run build",
+    "build:player": "pnpm --filter @oneact/player run build",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "pnpm -r --filter \"./packages/**\" exec tsc --noEmit",
+    "lint": "eslint packages/**/*.ts apps/**/*.ts",
+    "lint:fix": "eslint packages/**/*.ts apps/**/*.ts --fix",
+    "format": "prettier --write \"packages/**/*.{ts,json,md}\" \"apps/**/*.{ts,json,md}\"",
+    "format:check": "prettier --check \"packages/**/*.{ts,json,md}\" \"apps/**/*.{ts,json,md}\"",
+    "validate:example": "node packages/cli/bin/oneact.mjs validate examples/self-intro.act.json",
+    "changeset": "changeset",
+    "version": "changeset version",
+    "publish": "changeset publish",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{ts}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md}": [
+      "prettier --write"
+    ]
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.31.1",
+    "@commitlint/cli": "^19.5.0",
+    "@commitlint/config-conventional": "^19.5.0",
+    "@eslint/js": "^9.11.0",
+    "@types/node": "^20.14.0",
+    "eslint": "^9.11.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.30.0",
+    "globals": "^15.9.0",
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10",
+    "prettier": "^3.3.3",
+    "typescript": "^5.5.4",
+    "typescript-eslint": "^8.7.0",
+    "vite": "^5.4.0",
+    "vitest": "^2.1.0"
+  }
+}

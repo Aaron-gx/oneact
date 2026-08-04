@@ -1,0 +1,297 @@
+{
+  "formatVersion": 1,
+  "meta": { "title": "黄金测试集 · 全版式全组件", "theme": "yuanshan-blue", "size": "16:9" },
+  "pages": [
+    {
+      "id": "g1",
+      "layout": "title",
+      "title": "标题页",
+      "elements": [
+        {
+          "id": "g1t",
+          "type": "heading",
+          "slot": "title",
+          "rect": [64, 280, 1152, 110],
+          "props": { "text": "黄金测试集", "tone": "primary", "align": "center" }
+        },
+        {
+          "id": "g1s",
+          "type": "paragraph",
+          "slot": "subtitle",
+          "rect": [64, 410, 1152, 44],
+          "props": { "text": "覆盖 8 种版式与全部 13 种组件", "align": "center", "tone": "text-secondary" }
+        }
+      ]
+    },
+    {
+      "id": "g2",
+      "layout": "toc",
+      "title": "目录页",
+      "elements": [
+        {
+          "id": "g2t",
+          "type": "heading",
+          "slot": "title",
+          "rect": [64, 56, 1152, 64],
+          "props": { "text": "目录", "tone": "primary" }
+        },
+        {
+          "id": "g2l",
+          "type": "bullet-list",
+          "slot": "list",
+          "rect": [64, 170, 1152, 490],
+          "props": {
+            "items": ["标题与目录", "分栏与图表", "数据与卡片", "大图与表格公式", "引用与结束"],
+            "fontSize": 22
+          }
+        }
+      ]
+    },
+    {
+      "id": "g3",
+      "layout": "two-column",
+      "title": "分栏+柱状图",
+      "elements": [
+        {
+          "id": "g3t",
+          "type": "heading",
+          "slot": "title",
+          "rect": [64, 48, 1152, 60],
+          "props": { "text": "左右分栏", "tone": "primary" }
+        },
+        {
+          "id": "g3l",
+          "type": "bullet-list",
+          "slot": "left",
+          "rect": [64, 180, 560, 480],
+          "props": { "items": ["约束模式：选版式填 slot", "坐标取 slot 模板值", "校验器保证不越界"], "fontSize": 20 },
+          "anim": { "name": "fly-in-left", "stagger": 120 }
+        },
+        {
+          "id": "g3c",
+          "type": "chart",
+          "slot": "right",
+          "rect": [656, 180, 560, 480],
+          "props": {
+            "chartType": "bar",
+            "title": "季度营收",
+            "data": {
+              "categories": ["Q1", "Q2", "Q3", "Q4"],
+              "series": [{ "name": "营收", "values": [120, 180, 150, 210] }]
+            },
+            "summary": "Q4 营收 210 最高"
+          }
+        }
+      ]
+    },
+    {
+      "id": "g4",
+      "layout": "data",
+      "title": "数据页+折线",
+      "elements": [
+        {
+          "id": "g4t",
+          "type": "heading",
+          "slot": "title",
+          "rect": [64, 48, 1152, 60],
+          "props": { "text": "数据页", "tone": "primary" }
+        },
+        {
+          "id": "g4m1",
+          "type": "paragraph",
+          "slot": "metric1",
+          "rect": [64, 150, 360, 180],
+          "props": { "text": "2.7万\n关注", "align": "center", "tone": "primary", "fontSize": 26 }
+        },
+        {
+          "id": "g4m2",
+          "type": "paragraph",
+          "slot": "metric2",
+          "rect": [460, 150, 360, 180],
+          "props": { "text": "94%\n通过率", "align": "center", "tone": "primary", "fontSize": 26 }
+        },
+        {
+          "id": "g4m3",
+          "type": "paragraph",
+          "slot": "metric3",
+          "rect": [856, 150, 360, 180],
+          "props": { "text": "13\n组件", "align": "center", "tone": "primary", "fontSize": 26 }
+        },
+        {
+          "id": "g4c",
+          "type": "chart",
+          "slot": "chart",
+          "rect": [64, 360, 1152, 300],
+          "props": {
+            "chartType": "line",
+            "title": "增长趋势",
+            "smooth": true,
+            "data": {
+              "categories": ["2023", "2024", "2025", "2026"],
+              "series": [{ "name": "关注", "values": [1200, 3800, 9400, 27000] }]
+            },
+            "summary": "指数增长"
+          }
+        }
+      ]
+    },
+    {
+      "id": "g5",
+      "layout": "three-card",
+      "title": "三卡片",
+      "elements": [
+        {
+          "id": "g5t",
+          "type": "heading",
+          "slot": "title",
+          "rect": [64, 48, 1152, 60],
+          "props": { "text": "三卡片", "tone": "primary" }
+        },
+        {
+          "id": "g5c1",
+          "type": "paragraph",
+          "slot": "card1",
+          "rect": [64, 160, 360, 500],
+          "props": { "text": "① AI 生成层\nLLM + 说明书 + Schema", "fontSize": 18 }
+        },
+        {
+          "id": "g5c2",
+          "type": "paragraph",
+          "slot": "card2",
+          "rect": [460, 160, 360, 500],
+          "props": { "text": "② 内容层\nslides.json 可寻址", "fontSize": 18 }
+        },
+        {
+          "id": "g5c3",
+          "type": "paragraph",
+          "slot": "card3",
+          "rect": [856, 160, 360, 500],
+          "props": { "text": "③ 渲染层\n画布 + 组件 + 校验", "fontSize": 18 }
+        }
+      ]
+    },
+    {
+      "id": "g6",
+      "layout": "big-image",
+      "title": "大图页",
+      "elements": [
+        {
+          "id": "g6t",
+          "type": "heading",
+          "slot": "title",
+          "rect": [64, 48, 1152, 60],
+          "props": { "text": "大图页", "tone": "primary" }
+        },
+        {
+          "id": "g6i",
+          "type": "image",
+          "slot": "image",
+          "rect": [64, 140, 1152, 500],
+          "props": { "src": "placeholder:一张展示用的大图", "alt": "大图占位" }
+        }
+      ]
+    },
+    {
+      "id": "g7",
+      "layout": "two-column",
+      "title": "表格+公式+形状+图标",
+      "elements": [
+        {
+          "id": "g7t",
+          "type": "heading",
+          "slot": "title",
+          "rect": [64, 48, 1152, 60],
+          "props": { "text": "表格 / 公式 / 形状 / 图标", "tone": "primary" }
+        },
+        {
+          "id": "g7tb",
+          "type": "table",
+          "slot": "left",
+          "rect": [64, 180, 560, 300],
+          "props": {
+            "columns": [3, 2, 2],
+            "head": ["组件", "优先级", "状态"],
+            "rows": [
+              ["图表", "P0", "✓"],
+              ["公式", "P2", "✓"],
+              ["音视频", "P2", "✓"]
+            ],
+            "zebra": true
+          }
+        },
+        {
+          "id": "g7f",
+          "type": "formula",
+          "rect": [656, 180, 560, 140],
+          "props": { "latex": "E = mc^2", "color": "#2f54eb" }
+        },
+        {
+          "id": "g7sh",
+          "type": "shape",
+          "rect": [656, 340, 270, 140],
+          "props": { "shape": "ellipse", "fill": "#eeedfd", "stroke": "#4f46e5", "strokeWidth": 2 }
+        },
+        { "id": "g7ic", "type": "icon", "rect": [946, 340, 270, 140], "props": { "name": "rocket", "size": 80 } }
+      ]
+    },
+    {
+      "id": "g8",
+      "layout": "quote",
+      "title": "引用页",
+      "elements": [
+        {
+          "id": "g8q",
+          "type": "paragraph",
+          "slot": "quote",
+          "rect": [140, 210, 1000, 240],
+          "props": { "text": "“机器可校验性，是框架的灵魂。”", "fontSize": 34, "tone": "primary" }
+        },
+        {
+          "id": "g8a",
+          "type": "paragraph",
+          "slot": "author",
+          "rect": [140, 470, 1000, 40],
+          "props": { "text": "—— 一幕 OneAct", "tone": "text-secondary" }
+        }
+      ]
+    },
+    {
+      "id": "g9",
+      "layout": "end",
+      "title": "结束页+音视频+逃逸块",
+      "elements": [
+        {
+          "id": "g9t",
+          "type": "heading",
+          "slot": "title",
+          "rect": [64, 300, 1152, 90],
+          "props": { "text": "组件全集演示完成", "align": "center", "tone": "primary" }
+        },
+        {
+          "id": "g9v",
+          "type": "video",
+          "rect": [64, 130, 300, 150],
+          "props": { "src": "placeholder:演示视频", "poster": "placeholder:封面" }
+        },
+        { "id": "g9a", "type": "audio", "rect": [400, 130, 300, 80], "props": { "src": "placeholder:旁白音频" } },
+        {
+          "id": "g9svg",
+          "type": "custom-svg",
+          "rect": [740, 130, 200, 150],
+          "props": {
+            "svg": "<svg viewBox=\"0 0 100 100\"><circle cx=\"50\" cy=\"50\" r=\"40\" fill=\"#7c3aed\"/><circle cx=\"50\" cy=\"50\" r=\"20\" fill=\"#fff\"/></svg>",
+            "title": "靶心"
+          }
+        },
+        {
+          "id": "g9html",
+          "type": "custom-html",
+          "rect": [980, 130, 236, 150],
+          "props": {
+            "html": "<div style=\"padding:14px;background:linear-gradient(135deg,#7c3aed,#c026d3);color:#fff;border-radius:10px;font-size:14px;height:100%;box-sizing:border-box\">✦ 自定义 HTML<br/>逃逸块演示</div>"
+          }
+        }
+      ]
+    }
+  ]
+}

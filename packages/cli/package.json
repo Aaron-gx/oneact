@@ -1,0 +1,31 @@
+{
+  "name": "@oneact/cli",
+  "version": "0.1.0",
+  "type": "module",
+  "license": "Apache-2.0",
+  "description": "一幕 OneAct · 命令行（init / validate / serve / export）",
+  "bin": {
+    "oneact": "./bin/oneact.cjs"
+  },
+  "files": [
+    "bin",
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "build": "node build.mjs"
+  },
+  "dependencies": {
+    "@oneact/components": "workspace:*",
+    "@oneact/core": "workspace:*",
+    "@oneact/exporter-deck": "workspace:*",
+    "@oneact/exporter-pptx": "workspace:*",
+    "@oneact/layouts": "workspace:*",
+    "@oneact/schema": "workspace:*",
+    "fflate": "^0.8.3"
+  },
+  "devDependencies": {
+    "esbuild": "^0.23.0",
+    "typescript": "^5.5.4"
+  }
+}

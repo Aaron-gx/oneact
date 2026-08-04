@@ -1,0 +1,12 @@
+{
+  "name": "@oneact/desktop",
+  "private": true,
+  "version": "0.1.0",
+  "description": "一幕 OneAct · 桌面应用（Tauri 壳，关联 .act，本地离线）",
+  "scripts": {
+    "tauri": "tauri"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^1.6.0"
+  }
+}

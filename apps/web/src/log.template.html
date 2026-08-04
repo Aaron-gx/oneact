@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OneAct 日志</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root { --bg:#f4f5f7; --panel:#ffffff; --panel2:#eef0f3; --border:#e3e6ec; --text:#1d1c1a; --text2:#5b5a55; --text3:#8b909c;
+    --accent:#4f46e5; --info:#3b82f6; --warn:#d97706; --err:#dc2626; --ok:#16a34a; --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; }
+  html,body{height:100%}
+  body{font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",system-ui,sans-serif;background:var(--bg);color:var(--text);font-size:13px;display:flex;flex-direction:column}
+  header{flex:none;padding:12px 18px;background:var(--panel);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  header h1{font-size:15px;font-weight:700;display:flex;align-items:center;gap:9px}
+  header .dot{width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px rgba(79,70,229,.2)}
+  header .count{font-size:11px;color:var(--text3);font-family:var(--mono)}
+  .toolbar{flex:none;padding:9px 18px;background:var(--panel2);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .seg{display:flex;gap:3px;background:var(--bg);border:1px solid var(--border);border-radius:7px;padding:2px}
+  .seg button{background:transparent;border:none;color:var(--text2);padding:4px 11px;border-radius:5px;cursor:pointer;font-size:12px;font-weight:500}
+  .seg button.on{background:var(--accent);color:#fff}
+  .seg.err button.on{background:var(--err)} .seg.warn button.on{background:var(--warn);color:#1a1a1a}
+  input[type=text]{background:var(--bg);border:1px solid var(--border);color:var(--text);border-radius:7px;padding:6px 11px;font-size:12px;outline:none;flex:1;min-width:140px}
+  input[type=text]:focus{border-color:var(--accent)}
+  .spacer{flex:1}
+  .btn{background:var(--panel);border:1px solid var(--border);color:var(--text2);border-radius:7px;padding:6px 12px;cursor:pointer;font-size:12px;font-weight:500;transition:.1s}
+  .btn:hover{border-color:var(--accent);color:#fff}
+  #refresh{display:inline-flex;align-items:center;gap:5px}
+  #refresh .ri{display:inline-block;transition:transform .2s}
+  #refresh.spinning{pointer-events:none;border-color:var(--accent);color:var(--accent)}
+  #refresh.spinning .ri{animation:lr-spin .7s linear infinite}
+  @keyframes lr-spin{to{transform:rotate(360deg)}}
+  .refresh-ts{font-size:11px;color:var(--text3);font-family:var(--mono);min-width:96px}
+  .live-tag{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;color:var(--ok);background:rgba(22,163,74,.1);padding:3px 9px;border-radius:999px}
+  .live-tag i{width:7px;height:7px;border-radius:50%;background:var(--ok);animation:live-pulse 1.4s ease-in-out infinite}
+  @keyframes live-pulse{0%,100%{box-shadow:0 0 0 0 rgba(22,163,74,.5)}50%{box-shadow:0 0 0 4px rgba(22,163,74,0)}}
+  .btn.danger{color:var(--err);border-color:#5b2230}
+  .btn.danger:hover{background:#3a1620;color:#fff}
+  .toggle{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text2);cursor:pointer;user-select:none}
+  .toggle input{accent-color:var(--accent)}
+  .stat{font-size:11px;color:var(--text3);font-family:var(--mono);display:flex;gap:12px}
+  .stat b{color:var(--text2)}
+  .stat .e{color:var(--err)} .stat .w{color:var(--warn)}
+  main{flex:1;overflow:auto;padding:10px 18px 30px}
+  .empty{text-align:center;color:var(--text3);padding:60px 20px;font-size:13px}
+  .entry{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:9px 12px;margin-bottom:7px;font-size:12.5px;cursor:default;transition:border-color .1s}
+  .entry:hover{border-color:#3a4256}
+  .entry.error{border-left:3px solid var(--err)}
+  .entry.warn{border-left:3px solid var(--warn)}
+  .entry.info{border-left:3px solid var(--info)}
+  .entry .head{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+  .entry .time{font-family:var(--mono);font-size:11px;color:var(--text3)}
+  .entry .lv{font-size:10px;font-weight:700;padding:1px 7px;border-radius:4px;text-transform:uppercase;letter-spacing:.5px}
+  .entry.error .lv{background:rgba(239,68,68,.16);color:var(--err)}
+  .entry.warn .lv{background:rgba(245,158,11,.16);color:var(--warn)}
+  .entry.info .lv{background:rgba(59,130,246,.16);color:var(--info)}
+  .entry .cat{font-size:10px;color:var(--text2);background:var(--panel2);padding:1px 7px;border-radius:4px;font-family:var(--mono)}
+  .entry .msg{flex:1;min-width:0;color:var(--text);word-break:break-word;line-height:1.45}
+  .entry pre{margin-top:7px;background:#f7f8fa;border:1px solid var(--border);border-radius:6px;padding:8px 10px;font-family:var(--mono);font-size:11px;color:#475569;white-space:pre-wrap;word-break:break-word;max-height:280px;overflow:auto}
+  .entry .errstack{color:#b91c1c}
+  .hint{padding:9px 18px;background:rgba(79,70,229,.08);border-bottom:1px solid var(--border);font-size:11.5px;color:var(--text2);line-height:1.6}
+  .hint code{background:var(--panel2);padding:1px 5px;border-radius:3px;font-family:var(--mono);font-size:11px}
+  a{color:var(--accent)}
+</style>
+</head>
+<body>
+  <header>
+    <button class="btn" id="back-btn" title="返回主页">← 返回主页</button>
+    <h1><span class="dot"></span>OneAct 日志</h1>
+    <span class="count" id="count">0 条</span>
+    <div class="spacer"></div>
+    <label class="toggle"><input type="checkbox" id="auto"> 自动刷新</label>
+    <label class="toggle"><input type="checkbox" id="dbg"> 详细模式（含网络响应体）</label>
+  </header>
+  <div class="hint">
+    💡 生成失败时来这里看 <code>error</code> 级记录：常见原因——<code>401/403</code>=Key 无权限，<code>404</code>=模型名错误，<code>Failed to fetch</code>/CORS=服务商不允许浏览器直连（需支持跨域的端点或本地代理），<code>429</code>=限流。开启「详细模式」后重新生成，错误信息会带上 HTTP 响应体。
+  </div>
+  <div class="toolbar">
+    <div class="seg" id="lv-seg">
+      <button data-lv="all" class="on">全部</button>
+      <button data-lv="info">info</button>
+      <button data-lv="warn">warn</button>
+      <button data-lv="error">error</button>
+    </div>
+    <input type="text" id="search" placeholder="搜索消息/类别/堆栈…">
+    <div class="spacer"></div>
+    <div class="stat" id="stat"></div>
+    <button class="btn" id="refresh"><span class="ri">🔄</span><span>刷新</span></button>
+    <span class="refresh-ts" id="refresh-ts"></span>
+    <button class="btn" id="copy">📋 复制</button>
+    <button class="btn" id="export">⬇ 导出 JSON</button>
+    <button class="btn danger" id="clear">🗑 清空</button>
+  </div>
+  <main id="list"></main>
+  <script>__LOG_JS__</script>
+</body>
+</html>

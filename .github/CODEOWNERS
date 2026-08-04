@@ -1,0 +1,35 @@
+# CODEOWNERS — 代码归属与自动审查分配
+# 每行格式：<路径模式> @用户名/@团队名
+# 把 @maintainer-x 替换为实际 GitHub 用户名或团队名
+
+# ── 核心包（2 人审查，双重保险）──
+/packages/core/           @maintainer-a @maintainer-b
+/packages/schema/         @maintainer-a @maintainer-b
+
+# ── AI 模块（安全敏感，2 人审查）──
+/packages/ai/             @maintainer-a @maintainer-b
+
+# ── 业务包（1 人审查）──
+/packages/components/     @maintainer-c
+/packages/layouts/        @maintainer-c
+/packages/player/         @maintainer-c
+/packages/cli/            @maintainer-d
+/packages/exporter-deck/  @maintainer-d
+/packages/exporter-pptx/  @maintainer-d
+/packages/mcp/            @maintainer-d
+
+# ── 应用 ──
+/apps/                    @maintainer-c @maintainer-d
+
+# ── 基建（工具链、CI、文档）──
+/.github/                 @maintainer-a
+/docs/                    @maintainer-a
+/eslint.config.js         @maintainer-a
+/.prettierrc.json         @maintainer-a
+/commitlint.config.js     @maintainer-a
+/package.json             @maintainer-a
+/tsconfig.base.json       @maintainer-a
+/.husky/                  @maintainer-a
+
+# ── 默认（未匹配以上规则的文件）──
+*                         @maintainer-a

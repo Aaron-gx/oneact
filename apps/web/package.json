@@ -1,0 +1,25 @@
+{
+  "name": "@oneact/web",
+  "version": "0.5.0",
+  "type": "module",
+  "private": true,
+  "license": "Apache-2.0",
+  "description": "一幕 OneAct · 在线编辑器（类 WPS 三栏：缩略图/画布点选/属性面板 + AI 改这一页）",
+  "scripts": {
+    "build": "node build.mjs"
+  },
+  "dependencies": {
+    "@oneact/schema": "workspace:*",
+    "@oneact/core": "workspace:*",
+    "@oneact/components": "workspace:*",
+    "@oneact/layouts": "workspace:*",
+    "@oneact/ai": "workspace:*",
+    "@oneact/skills": "workspace:*",
+    "@oneact/exporter-deck": "workspace:*",
+    "@oneact/exporter-pptx": "workspace:*"
+  },
+  "devDependencies": {
+    "esbuild": "^0.23.0",
+    "typescript": "^5.5.4"
+  }
+}

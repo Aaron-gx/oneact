@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>一幕 OneAct · 文档</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif; background:#0f0e12; color:#ececf1; min-height:100vh; display:flex; flex-direction:column; align-items:center; padding:60px 20px; }
+  .mark { width:56px;height:56px;border-radius:14px;background:linear-gradient(135deg,#4f46e5,#7c3aed,#c026d3);display:grid;place-items:center;font-size:24px;font-weight:700;color:#fff;margin-bottom:18px;box-shadow:0 8px 30px rgba(99,60,235,.4); }
+  h1 { font-size:28px; margin-bottom:6px; }
+  .sub { color:#9b9aa6; margin-bottom:36px; }
+  .cards { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:14px; max-width:880px; width:100%; }
+  a.card { display:block; background:#26252c; border:1px solid rgba(255,255,255,.08); border-radius:12px; padding:18px 20px; text-decoration:none; color:#ececf1; transition:.15s; }
+  a.card:hover { border-color:#6366f1; transform:translateY(-2px); }
+  .card h3 { font-size:15px; margin-bottom:6px; }
+  .card p { font-size:12.5px; color:#9b9aa6; line-height:1.6; }
+  .tag { display:inline-block; font-size:10px; color:#a5b4fc; background:rgba(99,102,241,.15); padding:2px 8px; border-radius:999px; margin-top:8px; }
+</style>
+</head>
+<body>
+  <div class="mark">幕</div>
+  <h1>一幕 OneAct</h1>
+  <p class="sub">AI 原生演示框架 · 文档站</p>
+  <div class="cards">
+    <a class="card" href="../README.md"><h3>README · 项目总览</h3><p>定位、特性、快速开始、monorepo 结构、演进路线。</p><span class="tag">入门</span></a>
+    <a class="card" href="../策划书.md"><h3>策划书（设计定稿）</h3><p>14 节完整设计：四层架构、关键决策、产品形态、技术选型、路线。</p><span class="tag">设计</span></a>
+    <a class="card" href="../skills/oneact/SKILL.md"><h3>AI Skill 说明书</h3><p>生成协议、组件清单、版式 slot、自检清单、负面示例。</p><span class="tag">AI</span></a>
+    <a class="card" href="../skills/oneact/spec.md"><h3>生成说明书（spec）</h3><p>AI 写 slides.json 的完整契约（与 buildSpec 等价）。</p><span class="tag">AI</span></a>
+    <a class="card" href="../skills/oneact/mcp.md"><h3>MCP 工具定义</h3><p>5 个工具：get_spec / validate / outline / deck / rewrite_page。</p><span class="tag">集成</span></a>
+    <a class="card" href="#"><h3>API 参考（SDK）</h3><p>@oneact/core · schema · components · layouts · ai · player · cli。</p><span class="tag">开发</span></a>
+    <a class="card" href="../examples/self-intro.act.json"><h3>示例：一幕自荐</h3><p>9 页元演示（各版式 + 组件 + 动画 + 图表）。</p><span class="tag">示例</span></a>
+    <a class="card" href="../examples/golden.act.json"><h3>黄金测试集</h3><p>8 版式 × 13 组件，校验通过。</p><span class="tag">测试</span></a>
+  </div>
+</body>
+</html>

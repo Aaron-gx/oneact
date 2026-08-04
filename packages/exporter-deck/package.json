@@ -1,0 +1,27 @@
+{
+  "name": "@oneact/exporter-deck",
+  "version": "0.1.0",
+  "type": "module",
+  "license": "Apache-2.0",
+  "description": "一幕 OneAct · .act 打包/解包 + 自包含单 HTML 分发",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "import": "./src/index.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@oneact/core": "workspace:*",
+    "@oneact/schema": "workspace:*",
+    "fflate": "^0.8.3"
+  }
+}

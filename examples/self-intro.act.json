@@ -1,0 +1,372 @@
+{
+  "formatVersion": 1,
+  "meta": {
+    "title": "一幕 OneAct · 自荐演示",
+    "author": "一幕 OneAct",
+    "theme": "yuanshan-blue",
+    "size": "16:9"
+  },
+  "pages": [
+    {
+      "id": "p1",
+      "layout": "title",
+      "title": "一幕 OneAct",
+      "background": { "gradient": { "from": "#eef0fe", "to": "#ffffff", "angle": 135 } },
+      "transition": { "name": "fade", "duration": 600 },
+      "notes": "开场：点题——一套 AI 原生的演示框架。",
+      "elements": [
+        {
+          "id": "t1",
+          "type": "heading",
+          "slot": "title",
+          "rect": [64, 280, 1152, 110],
+          "props": { "text": "一幕 OneAct", "level": 1, "align": "center", "tone": "primary" }
+        },
+        {
+          "id": "t2",
+          "type": "paragraph",
+          "slot": "subtitle",
+          "rect": [64, 410, 1152, 44],
+          "props": {
+            "text": "AI 原生演示框架 · PPT 界的 HTML + 浏览器",
+            "align": "center",
+            "tone": "text-secondary",
+            "fontSize": 22
+          }
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "layout": "two-column",
+      "title": "为什么是现在",
+      "transition": { "name": "push-left", "duration": 500 },
+      "notes": "市场空档：两端成熟产品，中间是空的。",
+      "elements": [
+        {
+          "id": "h2",
+          "type": "heading",
+          "slot": "title",
+          "rect": [64, 48, 1152, 60],
+          "props": { "text": "为什么是现在", "tone": "primary" }
+        },
+        {
+          "id": "bl2",
+          "type": "bullet-list",
+          "slot": "left",
+          "rect": [64, 180, 560, 480],
+          "props": {
+            "items": [
+              "网页演示框架服务“给人写代码”，非 AI 友好",
+              "AI PPT 产品格式封闭、不可编程、不可本地嵌入",
+              "空档：以 AI 为一等公民的开放格式 + 运行时"
+            ],
+            "fontSize": 20
+          },
+          "anim": { "name": "fly-in-left", "duration": 600, "stagger": 150 }
+        },
+        {
+          "id": "c2",
+          "type": "chart",
+          "slot": "right",
+          "rect": [656, 180, 560, 480],
+          "props": {
+            "chartType": "bar",
+            "title": "三类方案 · AI 友好度",
+            "data": {
+              "categories": ["网页框架", "AI PPT 产品", "一幕 OneAct"],
+              "series": [{ "name": "AI 友好度", "values": [25, 45, 95] }]
+            },
+            "summary": "一幕 AI 友好度 95，远高于网页框架 25 与 AI PPT 产品 45。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "p3",
+      "layout": "two-column",
+      "title": "一句话定位",
+      "transition": { "name": "wipe-left", "duration": 500 },
+      "notes": "定位：开放格式 + 运行时。",
+      "elements": [
+        {
+          "id": "h3",
+          "type": "heading",
+          "slot": "title",
+          "rect": [64, 48, 1152, 60],
+          "props": { "text": "一句话定位", "tone": "primary" }
+        },
+        {
+          "id": "p3l",
+          "type": "paragraph",
+          "slot": "left",
+          "rect": [64, 180, 560, 480],
+          "props": {
+            "text": "一套开放的、AI 原生的演示文档格式 + 渲染运行时。\n\nAI 用 JSON 写幻灯片，框架负责高保真渲染，人像用 WPS 一样逐页预览，并可用自然语言指挥 AI 局部修改任意元素。",
+            "fontSize": 19,
+            "lineHeight": 1.8
+          }
+        },
+        {
+          "id": "tb3",
+          "type": "table",
+          "slot": "right",
+          "rect": [656, 180, 560, 300],
+          "props": {
+            "columns": [3, 2],
+            "head": ["方案", "局限"],
+            "rows": [
+              ["reveal.js / Slidev", "给人写代码"],
+              ["Gamma / Kimi PPT", "封闭不可编程"],
+              ["一幕 OneAct", "开放 · AI 原生"]
+            ],
+            "zebra": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "p4",
+      "layout": "three-card",
+      "title": "四层架构",
+      "transition": { "name": "zoom", "duration": 500 },
+      "notes": "核心架构：生成层、内容层、渲染层、交互层。",
+      "elements": [
+        {
+          "id": "h4",
+          "type": "heading",
+          "slot": "title",
+          "rect": [64, 48, 1152, 60],
+          "props": { "text": "四层核心架构", "tone": "primary" }
+        },
+        {
+          "id": "card1",
+          "type": "paragraph",
+          "slot": "card1",
+          "rect": [64, 160, 360, 500],
+          "props": {
+            "text": "① AI 生成层\n任意 LLM + 框架说明书：组件清单、JSON Schema、设计规范、MCP 工具。",
+            "fontSize": 18,
+            "lineHeight": 1.7,
+            "tone": "text"
+          }
+        },
+        {
+          "id": "card2",
+          "type": "paragraph",
+          "slot": "card2",
+          "rect": [460, 160, 360, 500],
+          "props": {
+            "text": "② 内容层\nslides.json：页面 = 版式 + 组件树，全部元素 id 可寻址，支持局部重写。",
+            "fontSize": 18,
+            "lineHeight": 1.7,
+            "tone": "text"
+          }
+        },
+        {
+          "id": "card3",
+          "type": "paragraph",
+          "slot": "card3",
+          "rect": [856, 160, 360, 500],
+          "props": {
+            "text": "③ 渲染层\n1280×720 固定画布 + 等比缩放 + 组件库 + 主题 + 动画 + 校验器。",
+            "fontSize": 18,
+            "lineHeight": 1.7,
+            "tone": "text"
+          }
+        }
+      ]
+    },
+    {
+      "id": "p5",
+      "layout": "two-column",
+      "title": "格式即资产",
+      "transition": { "name": "cover-left", "duration": 500 },
+      "notes": "格式 = 核心资产。AI 写得对，人也读得懂。",
+      "elements": [
+        {
+          "id": "h5",
+          "type": "heading",
+          "slot": "title",
+          "rect": [64, 48, 1152, 60],
+          "props": { "text": "格式即资产", "tone": "primary" }
+        },
+        {
+          "id": "p5l",
+          "type": "paragraph",
+          "slot": "left",
+          "rect": [64, 180, 560, 480],
+          "props": {
+            "text": "rect = [x, y, w, h] 四元数组，AI 易写不易错；\n富文本 = runs 数组，支持中英混排；\n声明式动画几乎不可能写错。\n\n格式一旦发布即冻结，只新增迁移器，永不 breaking change。",
+            "fontSize": 19,
+            "lineHeight": 1.8
+          }
+        },
+        {
+          "id": "code5",
+          "type": "custom-html",
+          "rect": [656, 180, 560, 480],
+          "props": {
+            "html": "<pre style=\"margin:0;padding:18px;background:#16151a;color:#e6e6e6;border-radius:10px;font-family:ui-monospace,Consolas,monospace;font-size:14px;line-height:1.7;overflow:hidden;height:100%;box-sizing:border-box\">{\n  <b style=\"color:#7dd3fc\">\"type\"</b>: <span style=\"color:#a7f3d0\">\"bullet-list\"</span>,\n  <b style=\"color:#7dd3fc\">\"rect\"</b>: [64, 218, 572, 318],\n  <b style=\"color:#7dd3fc\">\"props\"</b>: { <span style=\"color:#7dd3fc\">\"items\"</span>: [\n    [{ <span style=\"color:#7dd3fc\">\"text\"</span>: <span style=\"color:#a7f3d0\">\"中间是空的\"</span>,\n       <span style=\"color:#7dd3fc\">\"bold\"</span>: true }]\n  ]},\n  <b style=\"color:#7dd3fc\">\"anim\"</b>: { <span style=\"color:#7dd3fc\">\"name\"</span>: <span style=\"color:#a7f3d0\">\"fly-in-left\"</span>,\n           <span style=\"color:#7dd3fc\">\"stagger\"</span>: 120 }\n}</pre>",
+            "trusted": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "p6",
+      "layout": "data",
+      "title": "手绘图表",
+      "transition": { "name": "push-up", "duration": 500 },
+      "notes": "图表语义层：AI 只写类型+数据，渲染层翻译。手绘 SVG 零依赖。",
+      "elements": [
+        {
+          "id": "h6",
+          "type": "heading",
+          "slot": "title",
+          "rect": [64, 48, 1152, 60],
+          "props": { "text": "手绘 SVG 图表（零依赖）", "tone": "primary" }
+        },
+        {
+          "id": "m1",
+          "type": "paragraph",
+          "slot": "metric1",
+          "rect": [64, 150, 360, 180],
+          "props": { "text": "bar\n柱状图", "align": "center", "fontSize": 24, "tone": "primary" }
+        },
+        {
+          "id": "m2",
+          "type": "paragraph",
+          "slot": "metric2",
+          "rect": [460, 150, 360, 180],
+          "props": { "text": "line\n折线图", "align": "center", "fontSize": 24, "tone": "primary" }
+        },
+        {
+          "id": "m3",
+          "type": "paragraph",
+          "slot": "metric3",
+          "rect": [856, 150, 360, 180],
+          "props": { "text": "pie\n饼图", "align": "center", "fontSize": 24, "tone": "primary" }
+        },
+        {
+          "id": "c6",
+          "type": "chart",
+          "slot": "chart",
+          "rect": [64, 360, 1152, 300],
+          "props": {
+            "chartType": "line",
+            "title": "AI 演示工具关注度趋势",
+            "smooth": true,
+            "data": {
+              "categories": ["2023", "2024", "2025", "2026"],
+              "series": [{ "name": "关注度", "values": [1200, 3800, 9400, 27000] }]
+            },
+            "summary": "AI 演示工具关注度从 2023 年 1200 增长至 2026 年 27000，呈指数上升。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "p7",
+      "layout": "two-column",
+      "title": "声明式动画",
+      "transition": { "name": "fade", "duration": 500 },
+      "notes": "动画命名兼容 Office，参数极简。",
+      "elements": [
+        {
+          "id": "h7",
+          "type": "heading",
+          "slot": "title",
+          "rect": [64, 48, 1152, 60],
+          "props": { "text": "声明式动画", "tone": "primary" }
+        },
+        {
+          "id": "bl7",
+          "type": "bullet-list",
+          "slot": "left",
+          "rect": [64, 180, 560, 480],
+          "props": {
+            "items": [
+              "fly-in-left 飞入进入",
+              "fade-in 淡入进入",
+              "zoom-in 缩放进入",
+              "wipe-left 擦除进入",
+              "pulse 脉冲强调"
+            ],
+            "fontSize": 20
+          },
+          "anim": { "name": "fly-in-left", "duration": 500, "stagger": 120 }
+        },
+        {
+          "id": "p7r",
+          "type": "paragraph",
+          "slot": "right",
+          "rect": [656, 180, 560, 480],
+          "props": {
+            "text": "四类原语：进入 / 强调 / 退出 / 切换。\n\n编排：sequence 顺序 · 同时 · stagger 错落。\n参数仅 duration / delay / easing 三项——AI 几乎不可能写错。\n\n页面切换兼容 PPT/WPS：fade、push、wipe、zoom、morph 平滑。",
+            "fontSize": 19,
+            "lineHeight": 1.8
+          }
+        }
+      ]
+    },
+    {
+      "id": "p8",
+      "layout": "quote",
+      "title": "愿景",
+      "background": { "gradient": { "from": "#f6f5f2", "to": "#ffffff", "angle": 135 } },
+      "transition": { "name": "zoom", "duration": 600 },
+      "notes": "愿景引用。",
+      "elements": [
+        {
+          "id": "q8",
+          "type": "paragraph",
+          "slot": "quote",
+          "rect": [140, 210, 1000, 240],
+          "props": {
+            "text": "“AI 时代演示文档还没有事实标准，\n先占位者定义标准。”",
+            "fontSize": 36,
+            "lineHeight": 1.5,
+            "tone": "primary"
+          }
+        },
+        {
+          "id": "a8",
+          "type": "paragraph",
+          "slot": "author",
+          "rect": [140, 470, 1000, 40],
+          "props": { "text": "—— 一幕 OneAct 策划书", "fontSize": 18, "tone": "text-secondary" }
+        }
+      ]
+    },
+    {
+      "id": "p9",
+      "layout": "end",
+      "title": "谢谢观看",
+      "background": { "gradient": { "from": "#1a1830", "to": "#2f1f4a", "angle": 135 } },
+      "transition": { "name": "fade", "duration": 700 },
+      "notes": "结束页。",
+      "elements": [
+        {
+          "id": "e1",
+          "type": "heading",
+          "slot": "title",
+          "rect": [64, 300, 1152, 90],
+          "props": { "text": "谢谢观看", "align": "center", "color": "#ffffff" }
+        },
+        {
+          "id": "e2",
+          "type": "paragraph",
+          "slot": "subtitle",
+          "rect": [64, 410, 1152, 40],
+          "props": {
+            "text": "github.com/oneact-sh · .act 双击即播 · Apache-2.0",
+            "align": "center",
+            "color": "rgba(255,255,255,.7)",
+            "fontSize": 18
+          }
+        }
+      ]
+    }
+  ]
+}

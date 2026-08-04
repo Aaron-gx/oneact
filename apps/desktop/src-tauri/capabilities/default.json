@@ -1,0 +1,6 @@
+{
+  "identifier": "default",
+  "description": "OneAct 默认权限集（核心窗口/Webview）",
+  "windows": ["main"],
+  "permissions": ["core:default"]
+}

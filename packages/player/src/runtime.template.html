@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>一幕 OneAct · 舞台</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --ui-bg: #1b1a1f;
+    --ui-panel: #26252c;
+    --ui-panel-2: #32313a;
+    --ui-border: rgba(255,255,255,.08);
+    --ui-text: #ececf1;
+    --ui-text-2: #9b9aa6;
+    --ui-accent: #6366f1;
+  }
+  html, body { height: 100%; }
+  body {
+    font-family: "PingFang SC", "Microsoft YaHei", system-ui, -apple-system, sans-serif;
+    background: var(--ui-bg); color: var(--ui-text);
+    display: flex; flex-direction: column; height: 100vh; overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  #app { display: contents; }
+
+  /* 顶栏 */
+  .oa-topbar {
+    height: 52px; flex: none; background: var(--ui-panel);
+    display: flex; align-items: center; gap: 14px; padding: 0 16px;
+    border-bottom: 1px solid var(--ui-border); z-index: 5;
+  }
+  .oa-brand { display: flex; align-items: center; gap: 10px; }
+  .oa-mark {
+    width: 30px; height: 30px; border-radius: 8px; color: #fff; font-weight: 700;
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 55%, #c026d3 100%);
+    display: grid; place-items: center; font-size: 16px;
+    box-shadow: 0 2px 8px rgba(99,60,235,.4);
+  }
+  .oa-brand-name { font-size: 14px; font-weight: 600; }
+  .oa-brand-sub { font-size: 11px; color: var(--ui-text-2); }
+  .oa-counter { margin-left: auto; font-variant-numeric: tabular-nums; font-size: 13px; color: var(--ui-text-2); }
+  .oa-theme, .oa-btn {
+    height: 30px; border-radius: 7px; border: 1px solid var(--ui-border);
+    background: var(--ui-panel-2); color: var(--ui-text); font-size: 12px;
+    padding: 0 12px; cursor: pointer;
+  }
+  .oa-theme:hover, .oa-btn:hover { border-color: var(--ui-accent); }
+
+  /* 主体 */
+  .oa-main { flex: 1; display: flex; min-height: 0; }
+  .oa-thumbs {
+    width: 216px; flex: none; background: var(--ui-panel);
+    border-right: 1px solid var(--ui-border); padding: 12px 8px;
+    overflow-y: auto; display: flex; flex-direction: column; gap: 10px;
+  }
+  .oa-thumb {
+    position: relative; width: 200px; height: 113px; border: 2px solid transparent;
+    border-radius: 6px; overflow: hidden; cursor: pointer; background: #fff;
+    padding: 0; flex: none; display: block;
+  }
+  .oa-thumb:hover { border-color: var(--ui-accent); }
+  .oa-thumb.active { border-color: var(--ui-accent); box-shadow: 0 0 0 3px rgba(99,102,241,.25); }
+  .oa-thumb-scaler { width: 1280px; height: 720px; transform: scale(.15625); transform-origin: top left; pointer-events: none; }
+  .oa-thumb-label {
+    position: absolute; left: 4px; bottom: 4px; background: rgba(0,0,0,.6); color: #fff;
+    font-size: 10px; padding: 1px 6px; border-radius: 3px;
+  }
+
+  /* 舞台 */
+  .oa-stage-wrap { flex: 1; position: relative; background: #0f0e12; min-width: 0; }
+  .oa-stage { position: absolute; inset: 0; }
+  .oa-nav {
+    position: absolute; top: 50%; transform: translateY(-50%); z-index: 4;
+    width: 44px; height: 64px; border: none; border-radius: 8px;
+    background: rgba(255,255,255,.08); color: #fff; font-size: 26px; cursor: pointer;
+    display: grid; place-items: center; transition: background .15s;
+  }
+  .oa-nav:hover { background: rgba(255,255,255,.18); }
+  .oa-nav-prev { left: 16px; }
+  .oa-nav-next { right: 16px; }
+
+  /* 底栏 */
+  .oa-statusbar {
+    height: 34px; flex: none; background: var(--ui-panel);
+    border-top: 1px solid var(--ui-border); display: flex; align-items: center;
+    gap: 16px; padding: 0 16px; font-size: 12px; color: var(--ui-text-2);
+  }
+  .oa-statusbar [data-role="notes"] { flex: 1; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+  .oa-mini {
+    width: 26px; height: 22px; border-radius: 5px; border: 1px solid var(--ui-border);
+    background: var(--ui-panel-2); color: var(--ui-text); cursor: pointer; font-size: 12px;
+  }
+  .oa-mini:hover { border-color: var(--ui-accent); }
+
+  /* 进度条（顶栏下方细条，直观显示放映进度） */
+  .oa-progress { height: 3px; flex: none; background: var(--ui-panel-2); position: relative; overflow: hidden; }
+  .oa-progress i { position: absolute; left: 0; top: 0; bottom: 0; width: 0;
+    background: linear-gradient(90deg, #4f46e5, #7c3aed, #c026d3); transition: width .35s cubic-bezier(.22,1,.36,1); }
+  .oa-page-title { color: var(--ui-text); font-weight: 500; max-width: 46%;
+    overflow: hidden; white-space: nowrap; text-overflow: ellipsis; flex: none; }
+  .oa-stage-wrap { cursor: pointer; }
+
+  /* 画布过渡（push/cover 等需要相对定位的舞台容器） */
+  .oa-stage .oa-canvas { background: #fff; box-shadow: 0 10px 50px rgba(0,0,0,.4); }
+
+  /* 放映模式：隐藏全部 chrome，画布铺满黑底，纯净演示 */
+  body.oa-present, body.oa-present .oa-stage-wrap { background: #000; }
+  body.oa-present .oa-topbar,
+  body.oa-present .oa-thumbs,
+  body.oa-present .oa-statusbar,
+  body.oa-present .oa-nav { display: none !important; }
+  body.oa-present::after {
+    content: "Esc / P 退出放映";
+    position: fixed; right: 16px; bottom: 12px; z-index: 10;
+    font-size: 12px; color: rgba(255,255,255,.45); pointer-events: none;
+  }
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>__ONEACT_PLAYER_JS__</script>
+</body>
+</html>
