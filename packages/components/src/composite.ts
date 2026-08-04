@@ -394,7 +394,7 @@ export function funnel(el: AnyElement): string {
   const n = stages.length || 1;
   const vals = stages.map((s) => s.value);
   const hasV = vals.every((v) => typeof v === "number");
-  const maxV = hasV ? Math.max(1, ...vals.filter((v): v is number => v! > 0)) : 1;
+  const maxV = hasV ? Math.max(1, ...vals.filter((v): v is number => v > 0)) : 1;
   const segW = (i: number) =>
     hasV && typeof vals[i] === "number" ? Math.max(0.2, (vals[i] as number) / maxV) : 1 - (0.7 * i) / (n - 1 || 1);
   const topW = (i: number) => (i === 0 ? 1 : segW(i - 1));
@@ -455,7 +455,7 @@ export function orgChart(el: AnyElement): string {
   const p = el.props;
   const c = toneColor(p.tone);
   const line = "var(--oa-color-border)";
-  type Node = { name: RichText; role?: RichText; icon?: string };
+  interface Node { name: RichText; role?: RichText; icon?: string }
   const card = (node: Node, w: number, variant: "root" | "branch" | "leaf"): string => {
     const fill = variant === "root";
     const ic = node.icon ? iconSvg(node.icon, variant === "leaf" ? 15 : 19, fill ? "#fff" : c) : "";

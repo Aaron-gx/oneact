@@ -132,7 +132,7 @@ export function parseFrontmatter(md: string): Skill {
 
   // 正文段
   const sections = splitBodySections(body);
-  const structRaw = sections["骨架"] ?? sections["结构"] ?? sections["Structure"];
+  const structRaw = sections.骨架 ?? sections.结构 ?? sections.Structure;
   if (structRaw) {
     skill.structure = structRaw
       .split(/\r?\n/)
@@ -141,9 +141,9 @@ export function parseFrontmatter(md: string): Skill {
       .map(parseStructureLine)
       .filter(Boolean) as SkillSection[];
   }
-  const styleRaw = sections["风格指引"] ?? sections["Style"];
+  const styleRaw = sections.风格指引 ?? sections.Style;
   if (styleRaw?.trim()) skill.styleNotes = styleRaw.trim();
-  const dirRaw = sections["专业指令"] ?? sections["指令"] ?? sections["Directives"];
+  const dirRaw = sections.专业指令 ?? sections.指令 ?? sections.Directives;
   if (dirRaw?.trim()) skill.directives = dirRaw.trim();
   return skill;
 }
