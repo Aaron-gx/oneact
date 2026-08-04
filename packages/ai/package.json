@@ -23,6 +23,7 @@
     "@oneact/schema": "workspace:*",
     "@oneact/core": "workspace:*",
     "@oneact/components": "workspace:*",
+    "@oneact/layouts": "workspace:*",
     "@oneact/skills": "workspace:*"
   }
 }
