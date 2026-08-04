@@ -396,7 +396,7 @@ export function funnel(el: AnyElement): string {
   const hasV = vals.every((v) => typeof v === "number");
   const maxV = hasV ? Math.max(1, ...vals.filter((v): v is number => v > 0)) : 1;
   const segW = (i: number) =>
-    hasV && typeof vals[i] === "number" ? Math.max(0.2, (vals[i] as number) / maxV) : 1 - (0.7 * i) / (n - 1 || 1);
+    hasV && typeof vals[i] === "number" ? Math.max(0.2, vals[i] / maxV) : 1 - (0.7 * i) / (n - 1 || 1);
   const topW = (i: number) => (i === 0 ? 1 : segW(i - 1));
   const rows = stages
     .map((st, i) => {
