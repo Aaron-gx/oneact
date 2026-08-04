@@ -255,7 +255,7 @@ export async function cmdBenchmark(args: string[], flags: Record<string, string>
     mode,
     maxRetries: Number(flags.retries ?? 2),
     throttleMs: Number(flags.throttle ?? 1000),
-    onProgress: (cur, total, id) => {
+    onProgress: (cur: number, total: number, id: string) => {
       console.log(`  [${cur}/${total}] ${id} ...`);
     },
   });
