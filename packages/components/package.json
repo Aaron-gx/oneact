@@ -24,5 +24,8 @@
     "@oneact/schema": "workspace:*",
     "@types/katex": "^0.16.8",
     "katex": "^0.18.1"
+  },
+  "devDependencies": {
+    "@oneact/layouts": "workspace:*"
   }
 }
