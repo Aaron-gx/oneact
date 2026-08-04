@@ -16,6 +16,7 @@ _tmp_*
 
 # Rust / Tauri 构建产物
 **/target/
+*.exe
 
 # Tauri 自动生成
 **/src-tauri/gen/
