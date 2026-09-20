@@ -7,11 +7,11 @@
 import { canvasSize, computeScale, getTheme, migrate, renderPage, runtimeCss } from "@oneact/core";
 import "@oneact/components";
 import type { Deck } from "@oneact/schema";
+import { parseFrontmatter, serializeSkill } from "@oneact/skills";
 import { createBlankDeck, createDoc, deleteDoc, listDocs, renameDoc, saveDoc, type DocMeta } from "./doc-store.js";
 import { openProvidersModal } from "./providers.js";
-import { getUsage, summarizeUsage, clearUsage, type UsageEntry } from "./usage.js";
 import { listAllSkills, loadUserSkills, addUserSkill, deleteUserSkill } from "./skill-store.js";
-import { parseFrontmatter, serializeSkill } from "@oneact/skills";
+import { getUsage, summarizeUsage, clearUsage, type UsageEntry } from "./usage.js";
 
 declare const __SAMPLE_DECK__: string;
 declare const __GOLDEN_DECK__: string;
@@ -422,9 +422,11 @@ function renderUsage(): void {
     </div>
     <div class="usage-side">
       <div style="flex:1;min-width:200px"><h4>按类型</h4>
-        ${Object.entries(s.byType)
-          .map(([k, v]) => `<div class="um-row"><span>${TYPE_LABEL[k] || k}</span><b>${v} 次</b></div>`)
-          .join("") || '<div class="um-row"><span>—</span></div>'}</div>
+        ${
+          Object.entries(s.byType)
+            .map(([k, v]) => `<div class="um-row"><span>${TYPE_LABEL[k] || k}</span><b>${v} 次</b></div>`)
+            .join("") || '<div class="um-row"><span>—</span></div>'
+        }</div>
       <div style="flex:1;min-width:200px"><h4>按模型 · Token</h4>${byModelHtml || '<div class="um-row"><span>—</span></div>'}</div>
     </div>
     <table class="usage-table">

@@ -13,8 +13,8 @@
 import type { Brief, Outline } from "@oneact/ai";
 import type { GuardResult, LLMProvider } from "@oneact/ai";
 import type { BriefAnswers } from "@oneact/ai";
-import type { ComposedSkill } from "@oneact/skills";
 import type { Deck, LayoutDef, Page, ValidationResult } from "@oneact/schema";
+import type { ComposedSkill } from "@oneact/skills";
 
 // ──────────────────────────────── Agent 角色 ────────────────────────────────
 

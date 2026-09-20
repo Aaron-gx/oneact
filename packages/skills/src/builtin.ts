@@ -1,16 +1,16 @@
-import type { Skill } from "./types.js";
-import { startupPitch } from "./builtin/startup-pitch.js";
-import { businessReport } from "./builtin/business-report.js";
 import { academicDefense } from "./builtin/academic-defense.js";
-import { productLaunch } from "./builtin/product-launch.js";
 import { appleMinimal } from "./builtin/apple-minimal.js";
+import { businessReport } from "./builtin/business-report.js";
 import { consultingPro } from "./builtin/consulting-pro.js";
-import { techKeynote } from "./builtin/tech-keynote.js";
-import { finance } from "./builtin/finance.js";
-import { medical } from "./builtin/medical.js";
 import { education } from "./builtin/education.js";
-import { roadmap } from "./builtin/roadmap.js";
+import { finance } from "./builtin/finance.js";
 import { magazine } from "./builtin/magazine.js";
+import { medical } from "./builtin/medical.js";
+import { productLaunch } from "./builtin/product-launch.js";
+import { roadmap } from "./builtin/roadmap.js";
+import { startupPitch } from "./builtin/startup-pitch.js";
+import { techKeynote } from "./builtin/tech-keynote.js";
+import type { Skill } from "./types.js";
 
 /**
  * 内置官方 skill（与用户导入的 skill 同构，统一经 composeSkills / applySkill 处理）。

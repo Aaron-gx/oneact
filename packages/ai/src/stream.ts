@@ -13,11 +13,11 @@
 import { LAYOUTS } from "@oneact/layouts";
 import type { Page, ValidationResult } from "@oneact/schema";
 import { validatePage } from "@oneact/schema";
+import type { ComposedSkill } from "@oneact/skills";
 import { extractJson } from "./generate.js";
 import type { ChatMessage, GenerateOptions, LLMProvider, ProviderConfig, ProviderKind } from "./provider.js";
 import type { ModelTier } from "./router.js";
 import { buildSpec } from "./spec.js";
-import type { ComposedSkill } from "@oneact/skills";
 
 // ──────────────────────────── 流式 Provider 接口 ────────────────────────────
 
@@ -93,7 +93,8 @@ function extractDelta(chunk: Record<string, unknown>, kind: ProviderKind): strin
         return (delta?.text as string) ?? "";
       }
       return "";
-    case "gemini": { // Gemini streamGenerate 返回的是完整 candidates 结构的数组
+    case "gemini": {
+      // Gemini streamGenerate 返回的是完整 candidates 结构的数组
       const candidates = chunk.candidates as Record<string, unknown>[] | undefined;
       const parts = candidates?.[0]?.content as Record<string, unknown> | undefined;
       const partsArr = parts?.parts as Record<string, unknown>[] | undefined;

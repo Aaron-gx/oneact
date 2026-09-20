@@ -455,7 +455,11 @@ export function orgChart(el: AnyElement): string {
   const p = el.props;
   const c = toneColor(p.tone);
   const line = "var(--oa-color-border)";
-  interface Node { name: RichText; role?: RichText; icon?: string }
+  interface Node {
+    name: RichText;
+    role?: RichText;
+    icon?: string;
+  }
   const card = (node: Node, w: number, variant: "root" | "branch" | "leaf"): string => {
     const fill = variant === "root";
     const ic = node.icon ? iconSvg(node.icon, variant === "leaf" ? 15 : 19, fill ? "#fff" : c) : "";
@@ -470,7 +474,10 @@ export function orgChart(el: AnyElement): string {
   const vline = (h: number) => `<div style="width:2px;height:${h}px;background:${line};flex:none"></div>`;
   // 同级横排：多于 1 个时画横线连接各列中心（half = 列宽 / 2）
   const siblings = (cols: string[], half: number): string => {
-    const hl = cols.length > 1 ? `<div style="position:absolute;top:0;left:${half}px;right:${half}px;height:2px;background:${line}"></div>` : "";
+    const hl =
+      cols.length > 1
+        ? `<div style="position:absolute;top:0;left:${half}px;right:${half}px;height:2px;background:${line}"></div>`
+        : "";
     return `<div style="display:flex;gap:20px;position:relative">${hl}${cols.join("")}</div>`;
   };
   const branches = p.branches ?? [];
@@ -501,7 +508,7 @@ export function gantt(el: AnyElement): string {
   const tasks = p.tasks ?? [];
   const tl = p.timeline;
   const maxEnd = tasks.length ? Math.max(...tasks.map((t) => t.end)) : 1;
-  const labels = tl && tl.length ? tl : Array.from({ length: Math.max(1, Math.ceil(maxEnd)) }, (_, i) => String(i + 1));
+  const labels = tl?.length ? tl : Array.from({ length: Math.max(1, Math.ceil(maxEnd)) }, (_, i) => String(i + 1));
   const span = Math.max(labels.length, maxEnd, 1);
   const axis = labels
     .map((lb, i) => {
@@ -542,7 +549,10 @@ export function mindmap(el: AnyElement): string {
     .map((b) => {
       const bc = b.tone === "accent" ? "var(--oa-color-accent)" : c;
       const items = (b.items ?? [])
-        .map((it) => `<span style="font-size:13px;color:var(--oa-color-text-secondary);line-height:1.4">· ${rt(it)}</span>`)
+        .map(
+          (it) =>
+            `<span style="font-size:13px;color:var(--oa-color-text-secondary);line-height:1.4">· ${rt(it)}</span>`,
+        )
         .join(" ");
       return `<div style="display:flex;align-items:center;gap:10px;min-width:0">
         <div style="flex:none;width:22px;height:2px;background:${bc}"></div>

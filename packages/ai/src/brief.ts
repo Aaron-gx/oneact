@@ -10,10 +10,10 @@
  * Brief 驱动大纲（决定主题 + 页数 + 结构）与逐页生成（styleNotes 指引逐页变化），
  * 从而根除「千篇一律配色」与「固定 8 页」。
  */
-import { extractJson } from "./generate.js";
-import type { ChatMessage, LLMProvider } from "./provider.js";
 import type { Mood } from "@oneact/schema";
 import type { ComposedSkill } from "@oneact/skills";
+import { extractJson } from "./generate.js";
+import type { ChatMessage, LLMProvider } from "./provider.js";
 
 // Mood 已下沉到 @oneact/schema（与 theme 体系同源）；此处 re-export 保持
 // `import { Mood } from "@oneact/ai"` 的既有用法兼容（briefing.ts / 测试零改）。

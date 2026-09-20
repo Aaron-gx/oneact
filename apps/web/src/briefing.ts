@@ -18,8 +18,8 @@ import {
 } from "@oneact/ai";
 import { createProvider } from "@oneact/ai";
 import { composeSkills, type ComposedSkill, type Skill } from "@oneact/skills";
-import { listAllSkills } from "./skill-store.js";
 import { loadAiConfig } from "./editor.js";
+import { listAllSkills } from "./skill-store.js";
 
 const AUDIENCES = ["学生", "职场人士", "学术评审", "客户/投资人", "公众", "技术同行", "管理层"];
 const PURPOSES = ["工作汇报", "教学/培训", "产品路演", "项目总结", "科普分享", "方案评审"];
@@ -213,31 +213,51 @@ export function openBriefing(opts: BriefingOptions): void {
     box.innerHTML = items
       .map((it) => `<span class="bf-chip${it.k === selected ? " on" : ""}" data-k="${it.k}">${it.label}</span>`)
       .join("");
-    box.querySelectorAll<HTMLElement>(".bf-chip").forEach((c) =>
-      c.addEventListener("click", () => onPick(c.dataset.k!)),
-    );
+    box
+      .querySelectorAll<HTMLElement>(".bf-chip")
+      .forEach((c) => c.addEventListener("click", () => onPick(c.dataset.k!)));
   }
   function renderAllChips(): void {
-    renderChips(audBox, AUDIENCES.map((k) => ({ k, label: k })), answers.audience, (k) => {
-      answers.audience = k === answers.audience ? undefined : k;
-      recompute();
-      renderAllChips();
-    });
-    renderChips(purpBox, PURPOSES.map((k) => ({ k, label: k })), answers.purpose, (k) => {
-      answers.purpose = k === answers.purpose ? undefined : k;
-      recompute();
-      renderAllChips();
-    });
-    renderChips(moodBox, MOODS.map((m) => ({ k: m.k, label: m.label })), answers.mood, (k) => {
-      answers.mood = (k === answers.mood ? "auto" : k) as Mood | "auto";
-      recompute();
-      renderAllChips();
-    });
-    renderChips(lenBox, LENGTHS.map((l) => ({ k: l.k, label: l.label })), answers.length, (k) => {
-      answers.length = k as NonNullable<BriefAnswers["length"]>;
-      recompute();
-      renderAllChips();
-    });
+    renderChips(
+      audBox,
+      AUDIENCES.map((k) => ({ k, label: k })),
+      answers.audience,
+      (k) => {
+        answers.audience = k === answers.audience ? undefined : k;
+        recompute();
+        renderAllChips();
+      },
+    );
+    renderChips(
+      purpBox,
+      PURPOSES.map((k) => ({ k, label: k })),
+      answers.purpose,
+      (k) => {
+        answers.purpose = k === answers.purpose ? undefined : k;
+        recompute();
+        renderAllChips();
+      },
+    );
+    renderChips(
+      moodBox,
+      MOODS.map((m) => ({ k: m.k, label: m.label })),
+      answers.mood,
+      (k) => {
+        answers.mood = (k === answers.mood ? "auto" : k) as Mood | "auto";
+        recompute();
+        renderAllChips();
+      },
+    );
+    renderChips(
+      lenBox,
+      LENGTHS.map((l) => ({ k: l.k, label: l.label })),
+      answers.length,
+      (k) => {
+        answers.length = k as NonNullable<BriefAnswers["length"]>;
+        recompute();
+        renderAllChips();
+      },
+    );
   }
   /** 按 topic 关键词推荐每维度的 skill（未手选时；仅 UI 提示）。 */
   function updateRecommended(): void {

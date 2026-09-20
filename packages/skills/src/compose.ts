@@ -17,7 +17,7 @@ const DIM_LABEL: Record<SkillDimension, string> = {
 
 /** 把一段文本包上维度标签（空文本返回 undefined）。 */
 function labeled(dim: SkillDimension, text: string | undefined): string | undefined {
-  if (!text || !text.trim()) return undefined;
+  if (!text?.trim()) return undefined;
   return `【来自${DIM_LABEL[dim]}维度】${text.trim()}`;
 }
 
