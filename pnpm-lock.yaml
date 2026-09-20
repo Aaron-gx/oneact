@@ -105,6 +105,9 @@ importers:
       '@oneact/core':
         specifier: workspace:*
         version: link:../core
+      '@oneact/layouts':
+        specifier: workspace:*
+        version: link:../layouts
       '@oneact/schema':
         specifier: workspace:*
         version: link:../schema
@@ -114,6 +117,9 @@ importers:
 
   packages/cli:
     dependencies:
+      '@oneact/ai':
+        specifier: workspace:*
+        version: link:../ai
       '@oneact/components':
         specifier: workspace:*
         version: link:../components
@@ -157,6 +163,10 @@ importers:
       katex:
         specifier: ^0.18.1
         version: 0.18.1
+    devDependencies:
+      '@oneact/layouts':
+        specifier: workspace:*
+        version: link:../layouts
 
   packages/core:
     dependencies:
@@ -1610,6 +1620,7 @@ packages:
   eslint@9.39.5:
     resolution: {integrity: sha512-DgZS62aPLXKlnxILS/AYCoRvHaZeXceIzlXPkkGGzJWSow1aEk0lbTlxUSlyjC8jcaKxAdOnTDz+o1JFSBsyjw==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+    deprecated: This version is no longer supported. Please see https://eslint.org/version-support for other options.
     hasBin: true
     peerDependencies:
       jiti: '*'
